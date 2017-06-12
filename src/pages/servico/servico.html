@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="cadastroServico" (ngSubmit)="postDadosServico()">
+    <h4>Descreva seu anúncio</h4>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Título:</ion-label>
+        <ion-input name="titulo" type="text" formControlName="titulo" placeholder="EX: Aulas de inglês em domicílio..."></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Descreva seu serviço:</ion-label>
+        <ion-textarea name="descricao" type="text" formControlName="descricao" placeholder="Escreva aqui a descrição do seu anúncio..." clearInput="true"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <button class="botao" [disabled]="cadastroServico.invalid" ion-button full large round (click)="Cadastrar()">CRIAR CONTA</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

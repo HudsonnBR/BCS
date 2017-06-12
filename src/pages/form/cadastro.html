@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="cadastro" (ngSubmit)="postDados()">
+    <h4>Criar Conta</h4>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Nome:</ion-label>
+        <ion-input name="nome" type="text" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Usuário:</ion-label>
+        <ion-input name="usuario" type="text" formControlName="usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email:</ion-label>
+        <ion-input name="email" type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Senha:</ion-label>
+        <ion-input name="senha" type="password" formControlName="senha"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button class="botao" [disabled]="cadastro.invalid" ion-button full large round (click)="Cadastrar()">CRIAR CONTA</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

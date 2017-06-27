@@ -3,12 +3,12 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 export class User {
-  nome: string;
   email: string;
+  senha: string;
 
-  constructor(nome: string, email: string) {
-    this.nome = nome;
+  constructor(email: string, senha: string) {
     this.email = email;
+    this.senha = senha;
   }
 }
 

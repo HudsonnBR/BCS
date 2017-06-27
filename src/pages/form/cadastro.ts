@@ -38,13 +38,13 @@ export class FormPage {
       spinner: 'crescent',
       content: `
         <div class="custom-spinner-container">
-          <div class="custom-spinner-box">Carregando...</div>
+          <div class="custom-spinner-box">Enviando Dados, Aguarde...</div>
         </div>`,
-      duration: 1500
+      duration: 5000
     });
 
     loading.onDidDismiss(() => {
-      console.log('Loading off....');
+      console.log('Loading off...');
     });
 
     loading.present();

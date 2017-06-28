@@ -1,16 +1,15 @@
-import { AuthService } from '../pages/providers/auth-service';
+import { AuthService } from '../pages/provider/auth-service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { FormPage } from '../pages/form/cadastro';
 import { LoginPage } from '../pages/login/login';
 import { CadastroServicoPage } from '../pages/servico/servico';
-
-
+import {AjaxServiceProvider} from '../providers/ajax-service/ajax-service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -25,8 +24,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ],
   imports: [
     BrowserModule,
+      HttpModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+    AjaxServiceProvider
   ]
 })
 export class AppModule {}

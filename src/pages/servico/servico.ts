@@ -15,7 +15,7 @@ export class CadastroServicoPage {
 
   constructor(public nav: NavController, public formBuilder : FormBuilder, public http : Http, public loadingCtrl : LoadingController) {
     this.cadastroServico = this.formBuilder.group({
-      titulo:['', Validators.compose([Validators.maxLength(32), Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      titulo:['', Validators.compose([Validators.maxLength(64), Validators.minLength(5), Validators.pattern('[a-zA-Z0-9!-* ]*'), Validators.required])],
       valor:['', Validators.compose([Validators.maxLength(10), Validators.minLength(1), Validators.pattern('[0-9 ]*'), Validators.required])],
       descricao:['', Validators.compose([Validators.maxLength(255), Validators.minLength(10), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.required])],
     });

@@ -17,7 +17,7 @@ export class FormPage {
   constructor(public nav: NavController, public formBuilder : FormBuilder, public http : Http, public loadingCtrl: LoadingController) {
     this.cadastro = this.formBuilder.group({
       nome:['', Validators.compose([Validators.maxLength(32), Validators.minLength(2), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      usuario:['', Validators.compose([Validators.maxLength(32), Validators.minLength(2), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.required])],
+      usuario:['', Validators.compose([Validators.maxLength(16), Validators.minLength(2), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.required])],
       email:['', Validators.compose([Validators.maxLength(32), Validators.minLength(11), Validators.pattern('[a-zA-Z0-9@. ]*'), Validators.required])],
       senha:['', Validators.compose([Validators.maxLength(32), Validators.minLength(8), Validators.required])]
     });

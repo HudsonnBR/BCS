@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import {AjaxServiceProvider} from '../../providers/ajax-service/ajax-service';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  pesquisatexto : string = "HudsonnBR";
-  vrau : string = 'Eita preula!';
 
-  constructor(public navCtrl: NavController) {
+  anuncios: any[];
+  constructor(public navCtrl: NavController, public ajax : AjaxServiceProvider) {
+    ajax.getAnuncios();
+  }
 
-  }
-   pesquisaTexto = function(){
-    return "Retornando..." +this.pesquisatexto;
-  }
 }

@@ -10,7 +10,7 @@
       placeholder="Pesquisar por anúncios..."
       [(ngModel)]="barraPesquisa"
       [showCancelButton]="shouldShowCancel"
-      (ionInput)="pesquisaTexto()"
+      (ionInput)="getAnuncios()"
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
   </ion-toolbar>

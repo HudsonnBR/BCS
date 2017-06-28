@@ -8,7 +8,6 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { FormPage } from '../pages/form/cadastro';
 import { CadastroServicoPage } from '../pages/servico/servico';
-
 @Component({
   templateUrl: 'app.html'
 })

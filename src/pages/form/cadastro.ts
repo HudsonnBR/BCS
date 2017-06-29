@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { NavController, LoadingController } from 'ionic-angular';
-import { Http} from '@angular/http';
+import {AjaxServiceProvider} from '../../providers/ajax-service/ajax-service';
 import { HomePage } from '../home/home';
 
 @Component({
@@ -14,7 +14,7 @@ export class FormPage {
   cadastro : any = {};
   data : any = {};
 
-  constructor(public nav: NavController, public formBuilder : FormBuilder, public http : Http, public loadingCtrl: LoadingController) {
+  constructor(public nav: NavController, public formBuilder : FormBuilder, public ajax : AjaxServiceProvider, public loadingCtrl: LoadingController) {
     this.cadastro = this.formBuilder.group({
       nome:['', Validators.compose([Validators.maxLength(32), Validators.minLength(2), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       usuario:['', Validators.compose([Validators.maxLength(16), Validators.minLength(2), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.required])],
@@ -22,12 +22,9 @@ export class FormPage {
       senha:['', Validators.compose([Validators.maxLength(32), Validators.minLength(8), Validators.required])]
     });
   }
-  postDados(){
+  postDados(dados){
     this.showLoading();
-    console.log(this.cadastro.value);
-    this.data = this.cadastro.value;
-    this.http.post('http://localhost:2000/cadastro', this.data)
-      .subscribe ( data => {console.log(data);});
+    this.ajax.postDados(dados.value).subscribe(res=>console.log(res.msg));
   }
   Cadastrar(){
     this.nav.setRoot(HomePage);

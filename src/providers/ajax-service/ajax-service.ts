@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 /*
@@ -10,9 +10,7 @@ import {Observable} from 'rxjs/Observable';
 */
 @Injectable()
 export class AjaxServiceProvider {
-  private API: string = 'http://localhost:2000' ;
-  data : any = {};
-
+  private API: string = 'http://localhost:2000';
   constructor(public http : Http) {
     this.getAnuncios();
   }
@@ -20,8 +18,11 @@ export class AjaxServiceProvider {
   getAnuncios(){
     return this.http.get(this.API+'/anuncios').map(res => res.json());
   }
-  
+
   postAnuncios(data){
-    return this.http.post(this.API+'/data', this.data).map(res => res.json());
+    return this.http.post(this.API+'/anuncios', data).map((res:Response) => {return res.json()});
+  }
+  postDados(data){
+    return this.http.post(this.API+'/cadastro', data).map((res:Response) => {return res.json()});
   }
 }

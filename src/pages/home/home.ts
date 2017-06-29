@@ -9,7 +9,10 @@ export class HomePage {
 
   anuncios: any[];
   constructor(public navCtrl: NavController, public ajax : AjaxServiceProvider) {
-    ajax.getAnuncios();
+    ajax.getAnuncios().subscribe(
+      data => this.anuncios = data,
+      err => console.log(err) 
+    );
   }
 
 }

@@ -21,12 +21,34 @@ app.use(function (req, res, next) {
 var connection = mysql.createConnection({
       host : 'localhost',
       port: 3306,
-      user : 'root',
+      user : 'jorge',
       pass : '',
       database : 'bicos'
 });
-app.post('/cadastro', function(req, res){
 
+app.get('/anuncios', function(req, res){
+  connection.query('SELECT * FROM servico', function(err, result){
+        if(err){
+          res.json(err);
+          return;
+        }else if(result){
+          res.json(result);
+       }
+  });
+});
+app.post('/anuncios', function(req, res){
+  var data = req.body;
+  console.log(data);
+  connection.query('INSERT INTO servico SET ?', data, function(err, result){
+        if(err){
+          res.json({err: err});
+          return;
+        }else if(result){
+          res.json({msg: 'servico cadastrado com sucesso'});
+       }
+  });
+});
+app.post('/cadastro', function(req, res){
     var data = {
       nome: req.body.nome,
       usuario: req.body.usuario,
@@ -34,45 +56,12 @@ app.post('/cadastro', function(req, res){
       senha: req.body.senha
     };
     console.log(data);
-    connection.connect();
-    connection.query('SELECT * FROM user WHERE email=? AND usuario=?', {email: data.email, usuario: data.usuario}, function(err, result){
-      if (result != undefined) {
-        res.json("Email ou Usuario Já Cadastrado");
-      }
-      else if (result == undefined) {
         connection.query('INSERT INTO user SET ?', data, function(err, result){
                if(err){
                  res.json(err);
                  return;
                }else if(result){
                    res.json({msg:"Cadastrado com sucesso"});
-                 }
-             });
            }
-       });
-});
-app.post('/cadastroServico', function(req, res){
-
-    var dataservico = {
-      titulo: req.body.titulo,
-      valor: req.body.valor,
-      descricao: req.body.descricao
-    };
-    console.log(dataservico);
-    connectionServico.connect();
-    connectionServico.query('INSERT INTO servico SET ?', dataservico, function(err, result){
-           if(err){
-             res.json(err);
-             return;
-           }else if(result){
-               res.json({msg:"Dados enviados com sucesso"});
-             }
-         });
-
-});
-app.get('/anuncios', function(req, res){
-  connection.connect();
-  connection.query('SELECT * FROM servico', function(err, result){
-    res.json(result);
-  }
+        });
 });

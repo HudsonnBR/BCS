@@ -10,7 +10,7 @@
       placeholder="Pesquisar por anúncios..."
       [(ngModel)]="barraPesquisa"
       [showCancelButton]="shouldShowCancel"
-      (ionInput)="getAnuncios()"
+      (ionInput)="search"
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
   </ion-toolbar>
@@ -22,19 +22,11 @@
     </ion-item>
   </ion-list>
   <ion-card>
-    <ion-card-content>
-        <br/><h2>ANUNCIO PARA GANHARMOS DINHEIRO</h2><br/>
+    <ion-card-content *ngFor="let a of anuncios">
+        <h2><b>Titulo:</b> {{a.titulo}}</h2>
+        <h2><b>Valor:</b> {{a.valor}}</h2>
+        <h3><b>Descricão:</b> {{a.descricao}}</h3>
     </ion-card-content>
-  </ion-card><br/><br/>
-  <ion-card>
-    <ion-card-content>
-        <br/><h2>MAIS UM PRA GANHAR MAIS DINHEIRO</h2><br/>
-    </ion-card-content>
-  </ion-card><br/><br/>
-  <ion-card>
-    <ion-card-content>
-        <br/><h2>OUTRO SO PRA GARANTIR</h2><br/>
-    </ion-card-content>
-  </ion-card><br/><br/>
+  </ion-card>
 
 </ion-content>

@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="cadastroServico" (ngSubmit)="postDadosServico()">
+  <form [formGroup]="cadastroServico" (ngSubmit)="postDadosServico(cadastroServico)">
     <h4>Descreva seu anúncio</h4>
     <ion-list>
       <ion-item>
